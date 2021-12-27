@@ -1,9 +1,10 @@
-import { FC } from 'react'
-import { UserFeed } from '../types/user'
-import VideoPlayer from './videoPlayer'
+import { FC } from 'react';
+
+import { UserFeed } from '../types/user';
+import VideoPlayer from './videoPlayer';
 
 interface UserPostProps {
-  post: UserFeed
+  post: UserFeed;
 }
 
 const UserPost: FC<UserPostProps> = ({ post }) => {
@@ -22,7 +23,7 @@ const UserPost: FC<UserPostProps> = ({ post }) => {
         comments={post.stats.commentCount}
       />
     </div>
-  )
-}
+  );
+};
 
-export default UserPost
+export default UserPost;

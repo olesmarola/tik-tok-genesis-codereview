@@ -1,12 +1,13 @@
-import { FC } from 'react'
-import 'twin.macro'
-import { Post } from '../types/post'
-import Link from 'next/link'
-import Avatar from './avatar'
-import VideoPlayer from './videoPlayer'
+import 'twin.macro';
+import { FC } from 'react';
+import Link from 'next/link';
+
+import { Post } from '../types/post';
+import Avatar from './avatar';
+import VideoPlayer from './videoPlayer';
 
 interface PostProps {
-  post: Post
+  post: Post;
 }
 
 const PostLayout: FC<PostProps> = ({ post }) => {
@@ -32,11 +33,8 @@ const PostLayout: FC<PostProps> = ({ post }) => {
         {post.text && <p tw="text-lg">{post.text}</p>}
         {post.hashtags.length && (
           <div tw="flex flex-wrap gap-2 py-2">
-            {post.hashtags.map(ht => (
-              <div
-                tw="text-sm px-[.25rem] py-[.125rem] bg-gray-300 rounded-lg"
-                key={ht.id}
-              >
+            {post.hashtags.map((ht) => (
+              <div tw="text-sm px-[.25rem] py-[.125rem] bg-gray-300 rounded-lg" key={ht.id}>
                 {'#' + ht.name}
               </div>
             ))}
@@ -44,7 +42,7 @@ const PostLayout: FC<PostProps> = ({ post }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PostLayout
+export default PostLayout;

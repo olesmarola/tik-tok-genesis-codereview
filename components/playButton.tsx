@@ -1,9 +1,9 @@
-import { FC, MouseEvent } from 'react'
-import 'twin.macro'
+import 'twin.macro';
+import { FC, MouseEvent } from 'react';
 
 interface PlayButtonProps {
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void
-  isPaused: boolean
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  isPaused: boolean;
 }
 
 const PlayButton: FC<PlayButtonProps> = ({ onClick, isPaused }) => {
@@ -32,7 +32,7 @@ const PlayButton: FC<PlayButtonProps> = ({ onClick, isPaused }) => {
         </svg>
       )}
     </button>
-  )
-}
+  );
+};
 
-export default PlayButton
+export default PlayButton;

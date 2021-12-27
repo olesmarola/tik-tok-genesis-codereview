@@ -1,6 +1,5 @@
-import { useMemo } from 'react'
+import { useMemo } from 'react';
 
-const useFormatter = () =>
-  useMemo(() => Intl.NumberFormat('en', { notation: 'compact' }), [])
+const useFormatter = () => useMemo(() => Intl.NumberFormat('en', { notation: 'compact' }), []);
 
-export default useFormatter
+export default useFormatter;

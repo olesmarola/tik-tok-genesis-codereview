@@ -1,14 +1,15 @@
-import { FC } from 'react'
-import 'twin.macro'
-import useFormatter from '../lib/hooks/useFormatter'
+import 'twin.macro';
+import { FC } from 'react';
+
+import useFormatter from '../lib/hooks/useFormatter';
 
 interface SocialProps {
-  likes?: number
-  comments?: number
+  likes?: number;
+  comments?: number;
 }
 
 const Social: FC<SocialProps> = ({ likes = 0, comments = 0 }) => {
-  const formatter = useFormatter()
+  const formatter = useFormatter();
 
   return (
     <div tw="absolute right-2 top-1/2 -translate-y-1/2">
@@ -36,7 +37,7 @@ const Social: FC<SocialProps> = ({ likes = 0, comments = 0 }) => {
         <p>{formatter.format(comments)}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Social
+export default Social;

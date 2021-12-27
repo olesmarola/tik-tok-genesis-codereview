@@ -1,21 +1,19 @@
-import { FC } from 'react'
-import 'twin.macro'
-import { User } from '../types/user'
-import InfoCard from './infoCard'
-import Avatar from './avatar'
+import 'twin.macro';
+import { FC } from 'react';
+
+import { User } from '../types/user';
+import InfoCard from './infoCard';
+import Avatar from './avatar';
 
 interface UserProfileProps {
-  user: User
+  user: User;
 }
 
 const UserProfile: FC<UserProfileProps> = ({ user }) => {
   return (
     <div tw="my-4 rounded-lg bg-gray-100 max-w-2xl mx-auto px-4 py-2">
       <div tw="flex items-center justify-between mb-2">
-        <Avatar
-          nickname={user.user.nickname}
-          avatarThumb={user.user.avatarThumb}
-        />
+        <Avatar nickname={user.user.nickname} avatarThumb={user.user.avatarThumb} />
         <div tw="grid gap-2 grid-cols-3">
           <InfoCard label="Videos" value={user.stats.videoCount} />
           <InfoCard label="Followers" value={user.stats.followerCount} />
@@ -27,7 +25,7 @@ const UserProfile: FC<UserProfileProps> = ({ user }) => {
         <p>{user.user.signature}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserProfile
+export default UserProfile;

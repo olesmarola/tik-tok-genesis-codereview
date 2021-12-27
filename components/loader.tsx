@@ -1,9 +1,9 @@
-import { FC } from 'react'
-import 'twin.macro'
+import 'twin.macro';
+import { FC } from 'react';
 
 interface LoaderProps {
-  width?: number
-  height?: number
+  width?: number;
+  height?: number;
 }
 
 const Loader: FC<LoaderProps> = ({ width = 24, height = 24 }) => {
@@ -17,14 +17,7 @@ const Loader: FC<LoaderProps> = ({ width = 24, height = 24 }) => {
         fill="none"
         viewBox="0 0 24 24"
       >
-        <circle
-          tw="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="4"
-        />
+        <circle tw="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
         <path
           tw="opacity-75"
           fill="currentColor"
@@ -32,7 +25,7 @@ const Loader: FC<LoaderProps> = ({ width = 24, height = 24 }) => {
         />
       </svg>
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

@@ -15,4 +15,4 @@ module.exports = {
       'p77-sign-sg-lite.tiktokcdn.com',
     ],
   },
-}
+};
