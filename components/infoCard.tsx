@@ -1,7 +1,7 @@
 import 'twin.macro';
 import { FC } from 'react';
 
-import useFormatter from '../lib/hooks/useFormatter';
+import useFormatter from '../helpers/hooks/useFormatter';
 
 interface InfoCardProps {
   label: string;

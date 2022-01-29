@@ -2,7 +2,7 @@ import 'twin.macro';
 import { FC } from 'react';
 import Link from 'next/link';
 
-import { Post } from '../types/post';
+import { Post } from '../domain/post';
 import Avatar from './avatar';
 import VideoPlayer from './videoPlayer';
 

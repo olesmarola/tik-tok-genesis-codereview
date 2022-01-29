@@ -2,16 +2,14 @@ import 'twin.macro';
 import { FC, useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import axios from 'axios';
-import useSWR from 'swr';
 import { useRouter } from 'next/router';
 
-import { User, UserFeed } from '../../types/user';
+import { User } from '../../domain/user';
 import UserProfile from '../../components/userProfile';
 import Loader from '../../components/loader';
 import UserPost from '../../components/userPost';
-
-import { POST_LIMIT } from '../../constants/news';
+import getUser from '../../api/getUser';
+import useUserFeeds from '../../api/hooks/useUserFeeds';
 
 export const getServerSideProps: GetServerSideProps = async ({ params, query }) => {
   if (!params?.userId) {
@@ -20,13 +18,23 @@ export const getServerSideProps: GetServerSideProps = async ({ params, query }) 
     };
   }
 
-  const user = await axios.get<User>(`/user/info/${params.userId as string}`);
+  let userData;
+
+  try {
+    const { status, user } = await getUser({ userId: params.userId as string });
+
+    if (status === 200 && user) {
+      userData = user;
+    }
+  } catch (e) {
+    // TODO: add error handler
+  }
 
   return {
     props: {
       defaultPage: query.page || '1',
       userId: params.userId,
-      user: user.data,
+      user: userData,
     },
   };
 };
@@ -40,9 +48,7 @@ interface UserPageProps {
 const UserPage: FC<UserPageProps> = ({ user, userId, defaultPage }) => {
   const [page, setPage] = useState<string>(defaultPage);
   const router = useRouter();
-  const { data: posts } = useSWR<UserFeed[]>(
-    `/user/feed/${userId}?page=${page}&limit=${POST_LIMIT}`
-  );
+  const { feeds } = useUserFeeds({ userId, page });
 
   useEffect(() => {
     void router.push({ pathname: router.pathname, query: { page } }, undefined, { shallow: true });
@@ -55,9 +61,9 @@ const UserPage: FC<UserPageProps> = ({ user, userId, defaultPage }) => {
       </Head>
       <UserProfile user={user} />
       <div tw="grid gap-4 max-w-2xl mx-auto">
-        {posts ? (
-          posts.length ? (
-            posts.map((post) => <UserPost key={post.id} post={post} />)
+        {feeds ? (
+          feeds.length ? (
+            feeds.map((feed) => <UserPost key={feed.id} post={feed} />)
           ) : (
             <p tw="font-bold text-center py-4 text-2xl">This user haven&apos;t any post yet</p>
           )
