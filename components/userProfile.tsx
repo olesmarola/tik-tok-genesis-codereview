@@ -1,7 +1,7 @@
 import 'twin.macro';
 import { FC } from 'react';
 
-import { User } from '../types/user';
+import { User } from '../domain/user';
 import InfoCard from './infoCard';
 import Avatar from './avatar';
 

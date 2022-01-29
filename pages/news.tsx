@@ -2,27 +2,22 @@ import 'twin.macro';
 import { FC, useEffect, useState } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import axios from 'axios';
-import useSWR from 'swr';
 import { useRouter } from 'next/router';
 
-import { Post } from '../types/post';
+import { Post } from '../domain/post';
 import PostLayout from '../components/postLayout';
-import axiosFetcher from '../lib/axiosFetcher';
 import Loader from '../components/loader';
-
-import { POST_LIMIT } from '../constants/news';
+import usePosts from '../api/hooks/usePosts';
+import getPosts from '../api/getPosts';
 
 export const getServerSideProps: GetServerSideProps = async ({ query, params }) => {
-  let posts: Post[] = [];
+  let postsFallback: Post[] = [];
 
   try {
-    const response = await axios.get<Post[]>('/trending/feed', {
-      params: { limit: POST_LIMIT, page: params?.page || 1 },
-    });
+    const { status, posts } = await getPosts({ page: params?.page as string | undefined });
 
-    if (response.status === 200 && response.data.length) {
-      posts = response.data;
+    if (status === 200 && posts.length) {
+      postsFallback = posts;
     }
   } catch (e) {
     // TODO: add error handler
@@ -30,23 +25,21 @@ export const getServerSideProps: GetServerSideProps = async ({ query, params }) 
 
   return {
     props: {
-      posts,
-      defaultPage: query?.page || 1,
+      postsFallback,
+      defaultPage: query?.page || '1',
     },
   };
 };
 
 interface NewsProps {
-  posts: Post[];
+  postsFallback: Post[];
   defaultPage: string;
 }
 
-const News: FC<NewsProps> = ({ posts, defaultPage }) => {
+const News: FC<NewsProps> = ({ postsFallback, defaultPage }) => {
   const [page, setPage] = useState<string>(defaultPage);
   const router = useRouter();
-  const { data } = useSWR<Post[]>(`/trending/feed?page=${page}&limit=${POST_LIMIT}`, axiosFetcher, {
-    fallback: posts,
-  });
+  const { posts } = usePosts({ fallback: postsFallback, page });
 
   useEffect(() => {
     void router.push({ pathname: router.pathname, query: { page } }, undefined, { shallow: true });
@@ -57,12 +50,12 @@ const News: FC<NewsProps> = ({ posts, defaultPage }) => {
       <Head>
         <title>Feeds</title>
       </Head>
-      {!data ? (
+      {!posts ? (
         <Loader width={64} height={64} />
       ) : (
         <div tw="p-4 grid max-w-max gap-4 mx-auto">
-          {data.map((p) => (
-            <PostLayout post={p} key={p.id} />
+          {posts.map((post) => (
+            <PostLayout post={post} key={post.id} />
           ))}
         </div>
       )}

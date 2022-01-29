@@ -4,9 +4,9 @@ import { useInView } from 'react-intersection-observer';
 
 import Loader from './loader';
 import PlayButton from './playButton';
-import { VideoMeta } from '../types/post';
+import { VideoMeta } from '../domain/post';
 import Social from './social';
-import useFormatter from '../lib/hooks/useFormatter';
+import useFormatter from '../helpers/hooks/useFormatter';
 
 interface VideoPlayerProps {
   poster?: string;

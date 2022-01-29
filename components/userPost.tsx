@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { UserFeed } from '../types/user';
+import { UserFeed } from '../domain/user';
 import VideoPlayer from './videoPlayer';
 
 interface UserPostProps {
