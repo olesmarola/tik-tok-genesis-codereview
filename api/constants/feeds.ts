@@ -1,1 +1,1 @@
-export const FEEDS_URL = '/trending/feed';
+export const TRENDING_FEEDS_URL = '/trending/feed';

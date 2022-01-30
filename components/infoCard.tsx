@@ -1,4 +1,4 @@
-import 'twin.macro';
+import tw from 'twin.macro';
 import { FC } from 'react';
 
 import useFormatter from '../helpers/hooks/useFormatter';
@@ -8,14 +8,18 @@ interface InfoCardProps {
   value: number;
 }
 
+const InfoCardContainer = tw.div`px-4 py-2 bg-gray-200 dark:bg-gray-500 rounded-xl text-center transition-colors duration-300`;
+const InfoCardLabel = tw.h3`mb-0.5 truncate`;
+const InfoCardValue = tw.p`font-bold truncate`;
+
 const InfoCard: FC<InfoCardProps> = ({ label, value }) => {
   const formatter = useFormatter();
 
   return (
-    <div tw="px-4 py-2 bg-gray-200 rounded-xl text-center">
-      <h3 tw="mb-0.5 truncate">{label}</h3>
-      <p tw="font-bold truncate">{formatter.format(value)}</p>
-    </div>
+    <InfoCardContainer>
+      <InfoCardLabel>{label}</InfoCardLabel>
+      <InfoCardValue>{formatter.format(value)}</InfoCardValue>
+    </InfoCardContainer>
   );
 };
 

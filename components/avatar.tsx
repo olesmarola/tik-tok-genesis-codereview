@@ -1,6 +1,6 @@
-import 'twin.macro';
 import { FC } from 'react';
 import Image from 'next/image';
+import tw from 'twin.macro';
 
 interface AvatarProps {
   nickname: string;
@@ -8,10 +8,12 @@ interface AvatarProps {
   size?: number;
 }
 
+const AvatarContainer = tw.div`rounded-full w-max sm:mr-2 flex items-center overflow-hidden border border-gray-200`;
+
 const Avatar: FC<AvatarProps> = ({ nickname, avatarThumb, size = 64 }) => (
-  <div tw="rounded-full w-max sm:mr-2 flex items-center overflow-hidden">
+  <AvatarContainer>
     <Image width={size} height={size} alt={nickname} src={avatarThumb} />
-  </div>
+  </AvatarContainer>
 );
 
 export default Avatar;
