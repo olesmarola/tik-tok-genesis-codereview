@@ -16,9 +16,9 @@ const InfoCard: FC<InfoCardProps> = ({ label, value }) => {
   const formatter = useFormatter();
 
   return (
-    <InfoCardContainer>
+    <InfoCardContainer data-testid='user_info_card'>
       <InfoCardLabel>{label}</InfoCardLabel>
-      <InfoCardValue>{formatter.format(value)}</InfoCardValue>
+      <InfoCardValue data-testid="info_card_value">{formatter.format(value)}</InfoCardValue>
     </InfoCardContainer>
   );
 };

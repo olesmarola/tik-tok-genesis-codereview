@@ -50,7 +50,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster, videoMeta, likes, comm
   }, [isPaused]);
 
   return (
-    <VideoPlayerContainer ref={ref}>
+    <VideoPlayerContainer ref={ref} data-testid="video_player">
       {views && <ViewsCountContainer>Views: {formatter.format(views)}</ViewsCountContainer>}
       <Video
         ref={videoRef}
@@ -60,7 +60,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster, videoMeta, likes, comm
         poster={poster}
         width={videoMeta?.width}
       >
-        <source src={src} type={'video/mp4'} />
+        <source data-testid="video_source" src={src} type={'video/mp4'} />
       </Video>
       {isLoading && (
         <LoaderContainer>

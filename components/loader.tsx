@@ -13,7 +13,7 @@ const LoaderPath = tw.path`opacity-75`;
 
 const Loader: FC<LoaderProps> = ({ width = 24, height = 24 }) => {
   return (
-    <LoaderContainer>
+    <LoaderContainer data-testid="loader">
       <LoaderSvg
         width={width}
         height={height}

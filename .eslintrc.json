@@ -39,7 +39,21 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "prettier", "eslint-comments", "@typescript-eslint", "promise", "import"],
+  "plugins": [
+    "react",
+    "prettier",
+    "eslint-comments",
+    "@typescript-eslint",
+    "promise",
+    "import",
+    "testing-library"
+  ],
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
   "rules": {
     "import/no-unresolved": "error",
     "no-void": "off",

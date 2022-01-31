@@ -16,7 +16,7 @@ const Nickname = tw.p`text-2xl mb-1`;
 
 const UserProfile: FC<UserProfileProps> = ({ user }) => {
   return (
-    <UserProfileContainer>
+    <UserProfileContainer data-testid="user_profile">
       <UserProfileInfoContainer>
         <Avatar nickname={user.user.nickname} avatarThumb={user.user.avatarThumb} />
         <InfoCardsContainer>

@@ -11,7 +11,7 @@ interface AvatarProps {
 const AvatarContainer = tw.div`rounded-full w-max sm:mr-2 flex items-center overflow-hidden border border-gray-200`;
 
 const Avatar: FC<AvatarProps> = ({ nickname, avatarThumb, size = 64 }) => (
-  <AvatarContainer>
+  <AvatarContainer data-testid="avatar">
     <Image width={size} height={size} alt={nickname} src={avatarThumb} />
   </AvatarContainer>
 );
