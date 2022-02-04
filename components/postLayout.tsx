@@ -2,9 +2,9 @@ import tw from 'twin.macro';
 import { FC } from 'react';
 import Link from 'next/link';
 import { nanoid } from 'nanoid';
+import { Avatar } from '@olesmarola/oles-component-library'
 
 import { Post } from '../domain/post';
-import Avatar from './avatar';
 import VideoPlayer from './videoPlayer';
 
 interface PostProps {
@@ -26,7 +26,7 @@ const PostLayout: FC<PostProps> = ({ post }) => {
         <UserInfoContainerLink>
           <Avatar
             size={48}
-            nickname={post.authorMeta.nickName}
+            alt={post.authorMeta.nickName}
             avatarThumb={post.authorMeta.avatar}
           />
           <Nickname>{post.authorMeta.nickName}</Nickname>
