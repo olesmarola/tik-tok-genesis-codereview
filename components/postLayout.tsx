@@ -16,12 +16,12 @@ const UserInfoContainerLink = tw.a`flex items-center justify-between px-4 py-2 m
 const PostInfoContainer = tw.div`mt-2 px-4`;
 const PostInfoDesc = tw.p`text-lg mb-2`;
 const Nickname = tw.h2`text-xl`;
-const PostHashtagsContainer = tw.div`flex flex-wrap gap-2 py-2`;
-const Hashtag = tw.div`text-sm px-[.25rem] py-[.125rem] bg-gray-300 dark:bg-gray-700 rounded-lg transition-colors duration-300`;
+const PostHashtagsContainer = tw.ul`flex flex-wrap gap-2 py-2`;
+const Hashtag = tw.li`text-sm px-[.25rem] py-[.125rem] bg-gray-300 dark:bg-gray-700 rounded-lg transition-colors duration-300`;
 
 const PostLayout: FC<PostProps> = ({ post }) => {
   return (
-    <PostContainer>
+    <PostContainer data-testid="post_layout">
       <Link passHref href={`/users/${post.authorMeta.name}`}>
         <UserInfoContainerLink>
           <Avatar
@@ -41,7 +41,7 @@ const PostLayout: FC<PostProps> = ({ post }) => {
       <PostInfoContainer style={{ maxWidth: post.videoMeta.width }}>
         {post.text && <PostInfoDesc>{post.text}</PostInfoDesc>}
         {post.hashtags.length > 0 && (
-          <PostHashtagsContainer>
+          <PostHashtagsContainer data-testid="hashtags_list">
             {post.hashtags.map((ht) => (
               <Hashtag key={ht.id + nanoid()}>{'#' + ht.name}</Hashtag>
             ))}

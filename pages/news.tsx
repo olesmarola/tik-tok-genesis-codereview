@@ -8,6 +8,7 @@ import { Post } from '../domain/post';
 import getPosts from '../api/getPosts';
 
 const TrendingFeedContainer = tw.div`mt-10 p-4 grid max-w-max gap-4 mx-auto dark:(bg-gray-800 text-gray-50)`;
+const TrendingFeedHeading = tw.h1`text-4xl`;
 
 const News: FC = () => {
   const [posts, setPosts] = useState<Post[]>();
@@ -27,6 +28,7 @@ const News: FC = () => {
         <Loader width={64} height={64} />
       ) : (
         <TrendingFeedContainer>
+          <TrendingFeedHeading>Trending Feed</TrendingFeedHeading>
           {posts.map((post) => (
             <PostLayout post={post} key={post.id} />
           ))}

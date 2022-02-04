@@ -12,7 +12,7 @@ const UserPostContainer = tw.div`min-h-[calc(100vh - 12.375rem)] rounded-xl drop
 
 const UserPost: FC<UserPostProps> = ({ post }) => {
   return (
-    <UserPostContainer>
+    <UserPostContainer data-testid="user_post">
       <VideoPlayer
         views={post.stats.playCount}
         src={post.video.playAddr}
