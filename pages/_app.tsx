@@ -7,6 +7,7 @@ import axiosFetcher from '../api/fetchers/axiosFetcher';
 import ThemeProvider from '../components/themeProvider';
 
 import '../styles/globals.css';
+import '@olesmarola/oles-component-library/dist/tailwind.css'
 
 axios.defaults.baseURL = ''; // remove api url because use mock data
 axios.defaults.headers.common['x-rapidapi-host'] = 'tiktok33.p.rapidapi.com';

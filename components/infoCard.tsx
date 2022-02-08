@@ -8,7 +8,7 @@ interface InfoCardProps {
   value: number;
 }
 
-const InfoCardContainer = tw.div`px-4 py-2 bg-gray-200 dark:bg-gray-500 rounded-xl text-center transition-colors duration-300`;
+const InfoCardContainer = tw.div`px-4 py-2 bg-gray-200 dark:bg-gray-500 rounded-xl text-center`;
 const InfoCardLabel = tw.h3`mb-0.5 truncate`;
 const InfoCardValue = tw.p`font-bold truncate`;
 

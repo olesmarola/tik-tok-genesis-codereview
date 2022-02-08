@@ -6,8 +6,8 @@ interface PlayButtonProps {
   isPaused: boolean;
 }
 
-const Button = tw.button`absolute w-full inset-0 opacity-0 hover:opacity-100 transition-opacity transition-colors duration-300`;
-const Svg = tw.svg`w-16 h-16 mx-auto text-gray-800 dark:text-gray-200 transition-colors duration-300`;
+const Button = tw.button`absolute w-full inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300`;
+const Svg = tw.svg`w-16 h-16 mx-auto text-gray-800 dark:text-gray-200`;
 const Path = tw.path`fill-current`;
 
 const PlayButton: FC<PlayButtonProps> = ({ onClick, isPaused }) => {

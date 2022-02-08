@@ -3,7 +3,7 @@ import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/do
 import { extractCritical } from '@emotion/server';
 import tw from 'twin.macro';
 
-const Body = tw.body`transition-colors duration-300 dark:(bg-gray-800 text-gray-50)`;
+const Body = tw.body`dark:(bg-gray-800 text-gray-50)`;
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

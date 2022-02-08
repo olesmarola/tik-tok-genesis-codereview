@@ -8,7 +8,7 @@ interface UserPostProps {
   post: UserFeed;
 }
 
-const UserPostContainer = tw.div`min-h-[calc(100vh - 12.375rem)] rounded-xl drop-shadow transition-colors duration-300 bg-gray-200 dark:bg-gray-600 p-2 sm:mx-4 md:mx-0`;
+const UserPostContainer = tw.div`min-h-[calc(100vh - 12.375rem)] rounded-xl drop-shadow bg-gray-200 dark:bg-gray-600 p-2 sm:mx-4 md:mx-0`;
 
 const UserPost: FC<UserPostProps> = ({ post }) => {
   return (
