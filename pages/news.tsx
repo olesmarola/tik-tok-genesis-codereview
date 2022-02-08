@@ -14,9 +14,7 @@ const News: FC = () => {
   const [posts, setPosts] = useState<Post[]>();
 
   useEffect(() => {
-    getPosts()
-      .then(({ posts: p }) => setPosts(p))
-      .catch(() => setPosts([]));
+    setPosts(getPosts().posts);
   }, []);
 
   return (

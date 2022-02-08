@@ -1,6 +1,5 @@
 import tw from 'twin.macro';
 import { FC, useEffect, useState } from 'react';
-import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
 import { User } from '../../domain/user';
@@ -9,20 +8,7 @@ import Loader from '../../components/loader';
 import UserPost from '../../components/userPost';
 import getUser from '../../api/getUser';
 import useUserFeeds from '../../api/hooks/useUserFeeds';
-
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  if (!params?.userId) {
-    return Promise.resolve({
-      notFound: true,
-    });
-  }
-
-  return Promise.resolve({
-    props: {
-      userId: params.userId,
-    },
-  });
-};
+import { useRouter } from 'next/router';
 
 interface UserPageProps {
   userId: string;
@@ -31,15 +17,23 @@ interface UserPageProps {
 const UserFeedsContainer = tw.div`grid gap-4 max-w-2xl mx-auto`;
 const UserFeedsEmptyMessage = tw.p`font-bold text-center py-4 text-2xl`;
 
-const UserPage: FC<UserPageProps> = ({ userId }) => {
+const UserPage: FC<UserPageProps> = () => {
+  const router = useRouter();
   const [user, setUser] = useState<User>();
+  const [userId, setUserId] = useState<string>('');
   const { feeds } = useUserFeeds({ userId });
 
   useEffect(() => {
-    getUser({ userId })
-      .then(({ user: u }) => setUser(u))
-      .catch(() => {});
+    if ('userId' in router.query) {
+      setUserId(router.query.userId as string);
+    } else {
+      void router.push('/404');
+    }
   }, []);
+
+  useEffect(() => {
+    setUser(getUser({ userId }).user);
+  }, [userId]);
 
   return (
     <>

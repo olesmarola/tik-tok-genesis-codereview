@@ -1,13 +1,14 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import { useEffect, FC } from 'react';
+import { useRouter } from 'next/router';
 
-export const getServerSideProps: GetServerSideProps = () =>
-  Promise.resolve({
-    redirect: {
-      permanent: true,
-      destination: '/news',
-    },
-  });
+const Home: FC = () => {
+  const router = useRouter();
 
-const Home: NextPage = () => null;
+  useEffect(() => {
+    void router.push('/news');
+  }, []);
+
+  return null;
+};
 
 export default Home;

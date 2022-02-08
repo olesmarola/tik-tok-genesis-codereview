@@ -18,7 +18,7 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayerContainer = tw.div`relative w-full h-full`;
-const ViewsCountContainer = tw.div`absolute left-2 top-1 rounded-lg transition-colors duration-300 bg-gray-200 dark:bg-gray-500 px-[.25rem] py-[.125rem]`;
+const ViewsCountContainer = tw.div`absolute left-2 top-1 rounded-lg bg-gray-200 dark:bg-gray-500 px-[.25rem] py-[.125rem]`;
 const Video = tw.video`block w-full h-full object-contain absolute inset-0`;
 const LoaderContainer = tw.div`absolute inset-0 flex items-center justify-center`;
 

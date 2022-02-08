@@ -7,7 +7,7 @@ interface LoaderProps {
 }
 
 const LoaderContainer = tw.div`flex items-center justify-center m-24`;
-const LoaderSvg = tw.svg`transition-colors duration-300 animate-spin text-gray-600 dark:(text-gray-400)`;
+const LoaderSvg = tw.svg`animate-spin text-gray-600 dark:(text-gray-400)`;
 const LoaderCircle = tw.circle`opacity-25`;
 const LoaderPath = tw.path`opacity-75`;
 

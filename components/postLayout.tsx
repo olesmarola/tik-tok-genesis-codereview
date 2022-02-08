@@ -2,33 +2,29 @@ import tw from 'twin.macro';
 import { FC } from 'react';
 import Link from 'next/link';
 import { nanoid } from 'nanoid';
-import { Avatar } from '@olesmarola/oles-component-library'
 
 import { Post } from '../domain/post';
 import VideoPlayer from './videoPlayer';
+import Avatar from './avatar';
 
 interface PostProps {
   post: Post;
 }
 
-const PostContainer = tw.div`transition-colors duration-300 bg-gray-200 dark:bg-gray-600 rounded-xl overflow-hidden h-[calc(100vh - 2rem)] flex flex-col`;
+const PostContainer = tw.div`bg-gray-200 dark:bg-gray-600 rounded-xl overflow-hidden h-[calc(100vh - 2rem)] flex flex-col`;
 const UserInfoContainerLink = tw.a`flex items-center justify-between px-4 py-2 mb-2 hover:bg-gray-500 transition-colors duration-500`;
 const PostInfoContainer = tw.div`mt-2 px-4`;
 const PostInfoDesc = tw.p`text-lg mb-2`;
 const Nickname = tw.h2`text-xl`;
 const PostHashtagsContainer = tw.ul`flex flex-wrap gap-2 py-2`;
-const Hashtag = tw.li`text-sm px-[.25rem] py-[.125rem] bg-gray-300 dark:bg-gray-700 rounded-lg transition-colors duration-300`;
+const Hashtag = tw.li`text-sm px-[.25rem] py-[.125rem] bg-gray-300 dark:bg-gray-700 rounded-lg`;
 
 const PostLayout: FC<PostProps> = ({ post }) => {
   return (
     <PostContainer data-testid="post_layout">
-      <Link passHref href={`/users/${post.authorMeta.name}`}>
+      <Link passHref href={{pathname: '/users', query: {userId: post.authorMeta.name}}}>
         <UserInfoContainerLink>
-          <Avatar
-            size={48}
-            alt={post.authorMeta.nickName}
-            avatarThumb={post.authorMeta.avatar}
-          />
+          <Avatar size={48} nickname={post.authorMeta.nickName} avatarThumb={post.authorMeta.avatar} />
           <Nickname>{post.authorMeta.nickName}</Nickname>
         </UserInfoContainerLink>
       </Link>

@@ -25,6 +25,8 @@ function useEsbuildLoader(config, options) {
 module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   images: {
+    loader: 'akamai',
+    path: '',
     domains: [
       'p16-sign-sg.tiktokcdn.com',
       'v16-web.tiktok.com',

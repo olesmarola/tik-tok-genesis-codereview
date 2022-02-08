@@ -11,7 +11,7 @@ interface SocialProps {
 const SocialContainer = tw.div`absolute right-2 top-1/2 -translate-y-1/2`;
 const SocialContainerItems = tw.div`flex gap-1 flex-col items-center mb-2`;
 
-const Svg = tw.svg`w-8 h-8 text-gray-800 dark:text-gray-200 transition-colors duration-300`;
+const Svg = tw.svg`w-8 h-8 text-gray-800 dark:text-gray-200`;
 const Path = tw.path`fill-current`;
 
 const Social: FC<SocialProps> = ({ likes = 0, comments = 0 }) => {
